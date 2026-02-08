@@ -6,9 +6,7 @@
   "account": {
     "verificationType": "email",
     "google": {
-      "enabled": true,
-      "clientId": "env://GOOGLE_CLIENT_ID",
-      "clientSecret": "env://GOOGLE_CLIENT_SECRET"
+      "enabled": false
     }
   },
   "email": {
