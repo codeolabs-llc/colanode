@@ -46,7 +46,20 @@ class EmailService {
       return;
     }
 
-    await this.transporter.verify();
+    try {
+      await this.transporter.verify();
+      logger.info(
+        `Email service initialized successfully (host: ${provider.host}, port: ${provider.port})`
+      );
+    } catch (error) {
+      logger.error(
+        error,
+        `Email service failed to connect to SMTP server. Check these settings: ` +
+          `host=${provider.host}, port=${provider.port}, secure=${provider.secure}, ` +
+          `user=${provider.auth.user}`
+      );
+      this.transporter = undefined;
+    }
   }
 
   public async sendEmail(message: EmailMessage): Promise<void> {
@@ -55,10 +68,19 @@ class EmailService {
       return;
     }
 
-    await this.transporter.sendMail({
-      from: this.from,
-      ...message,
-    });
+    try {
+      await this.transporter.sendMail({
+        from: this.from,
+        ...message,
+      });
+    } catch (error) {
+      logger.error(
+        error,
+        `Failed to send email to ${Array.isArray(message.to) ? message.to.join(', ') : message.to} ` +
+          `(subject: "${message.subject}")`
+      );
+      throw error;
+    }
   }
 }
 
