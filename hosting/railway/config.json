@@ -18,8 +18,8 @@
     "provider": {
       "type": "smtp",
       "host": "env://EMAIL_SMTP_HOST",
-      "port": 465,
-      "secure": true,
+      "port": 587,
+      "secure": false,
       "auth": {
         "user": "env://EMAIL_SMTP_USER",
         "password": "env://EMAIL_SMTP_PASSWORD"
