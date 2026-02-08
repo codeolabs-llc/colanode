@@ -1,5 +1,31 @@
 {
   "cors": {
     "origin": "env://ORIGIN"
+  },
+  "name": "env://SERVER_NAME",
+  "account": {
+    "verificationType": "email",
+    "google": {
+      "enabled": true,
+      "clientId": "env://GOOGLE_CLIENT_ID",
+      "clientSecret": "env://GOOGLE_CLIENT_SECRET"
+    }
+  },
+  "email": {
+    "enabled": true,
+    "from": {
+      "email": "env://EMAIL_FROM",
+      "name": "env://EMAIL_FROM_NAME"
+    },
+    "provider": {
+      "type": "smtp",
+      "host": "env://EMAIL_SMTP_HOST",
+      "port": 465,
+      "secure": true,
+      "auth": {
+        "user": "env://EMAIL_SMTP_USER",
+        "password": "env://EMAIL_SMTP_PASSWORD"
+      }
+    }
   }
 }
