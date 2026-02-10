@@ -200,3 +200,7 @@ expo-env.d.ts
 *.mobileprovision
 /ios
 /android
+
+# Ignore JetBrains IDE configuration files
+.idea/
+.run/
