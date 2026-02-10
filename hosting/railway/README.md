@@ -98,7 +98,7 @@ Set these in **Settings > Build & Deploy**:
 |--------------------|-----------------------------------|
 | **Build command**  | `npm run build:server`            |
 | **Start command**  | `npm run start:server`            |
-| **Watch paths**    | `packages/core/**`, `packages/crdt/**`, `apps/server/**` |
+| **Watch paths**    | `/apps/server/**`, `/packages/core/**`, `/packages/crdt/**`, `/hosting/railway/**`, `/package.json` |
 
 Set these environment variables:
 
