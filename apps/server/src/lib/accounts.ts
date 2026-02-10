@@ -14,6 +14,7 @@ import {
 import { database } from '@colanode/server/data/database';
 import { SelectAccount } from '@colanode/server/data/schema';
 import { config } from '@colanode/server/lib/config';
+import { createLogger } from '@colanode/server/lib/logger';
 import {
   deleteOtp,
   fetchOtp,
@@ -36,6 +37,8 @@ import {
   AccountVerifyOtpAttributes,
   AccountPasswordResetOtpAttributes,
 } from '@colanode/server/types/otps';
+
+const logger = createLogger('accounts');
 
 export const generatePasswordHash = async (
   password: string
@@ -267,6 +270,12 @@ export const sendWorkspaceInvitationEmail = async (
   userId: string
 ): Promise<void> => {
   if (!config.email.enabled || !config.web) {
+    logger.warn(
+      'Workspace invitation email skipped: %s. Check your CONFIG file and ensure both the "email" (with "enabled": true) and "web" (with "domain") blocks are configured.',
+      !config.email.enabled
+        ? '"email" is not enabled'
+        : '"web" is not configured'
+    );
     return;
   }
 

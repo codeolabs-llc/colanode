@@ -1,4 +1,8 @@
 {
+  "web": {
+    "domain": "env://WEB_DOMAIN",
+    "protocol": "https"
+  },
   "cors": {
     "origin": "env://ORIGIN"
   },
